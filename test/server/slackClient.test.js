@@ -8,7 +8,10 @@ describe("slackClient", () => {
   it("should successfully connect to slack", done => {
     const slackClient = new SlackClient(
       config.slackToken,
-      config.slackLogLevel
+      config.slackLogLevel,
+      null,
+      null,
+      config.log("test")
     );
     slackClient.start(slackRes => {
       slackRes.ok.should.be.true;
