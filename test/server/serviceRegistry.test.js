@@ -8,8 +8,8 @@ const log = config.log("test");
 describe("ServiceRegistry", () => {
   describe("new", () => {
     it("should accept a timeout being passed in", () => {
-      const serviceRegistry = new ServiceRegistry(42, log);
-      serviceRegistry._timeout.should.equal(42);
+      const serviceRegistry = new ServiceRegistry(43, log);
+      serviceRegistry._timeout.should.equal(43);
     });
   });
 
