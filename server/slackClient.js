@@ -1,18 +1,19 @@
 "use strict";
 
-const RtmClient = require("@slack/client").RtmClient;
-const CLIENT_EVENTS = require("@slack/client").CLIENT_EVENTS;
-const RTM_EVENTS = require("@slack/client").RTM_EVENTS;
+const {RTMClient} = require("@slack/client");
+// const CLIENT_EVENTS = require("@slack/client").CLIENT_EVENTS;
+// const RTM_EVENTS = require("@slack/client").RTM_EVENTS;
 
 class SlackClient {
   constructor(token, logLevel, nlp, registry, log) {
-    this._rtm = new RtmClient(token, { logLevel: logLevel });
+    this._rtm = new RTMClient(token, { logLevel: logLevel });
     this._nlp = nlp;
     this._registry = registry;
     this._log = log
 
     this._addAuthenticatedHandler(this._handleOnAuthenticated);
-    this._rtm.on(RTM_EVENTS.MESSAGE, this._handleOnMessage.bind(this));
+    // this._rtm.on(RTM_EVENTS.MESSAGE, this._handleOnMessage.bind(this));
+    this._rtm.on('message', this._handleOnMessage.bind(this));
   }
 
   _handleOnAuthenticated(rtmStartData) {
@@ -24,7 +25,8 @@ class SlackClient {
   }
 
   _addAuthenticatedHandler(handler) {
-    this._rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, handler.bind(this));
+    // this._rtm.on(CLIENT_EVENTS.RTM.AUTHENTICATED, handler.bind(this));
+    this._rtm.on('authenticated', handler.bind(this));
   }
 
   _handleOnMessage(message) {

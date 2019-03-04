@@ -7,7 +7,7 @@
     "test": "NODE_ENV=test eslint bin server && nyc mocha --recursive test --exit",
     "start": "node bin/run"
   },
-  "engines" : {
+  "engines": {
     "node": "6.9.5"
   },
   "repository": {
@@ -17,14 +17,14 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@slack/client": "^3.6.0",
+    "@slack/client": "^4.10.0",
     "bunyan": "^1.8.12",
     "dotenv": "^6.2.0",
     "express": "^4.14.0",
     "superagent": "^2.2.0"
   },
   "devDependencies": {
-    "eslint": "^5.14.1",
+    "eslint": "^5.15.0",
     "mocha": "^6.0.0",
     "nyc": "^13.3.0",
     "should": "^13.2.3",
